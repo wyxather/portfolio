@@ -118,7 +118,10 @@ function MenuItem({ pageItemIndex, children }) {
           inactive: { translateX: '0%' },
           active: { translateX: '5%' },
         }}
-        onClick={() => setActivePageItemIndex(pageItemIndex)}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'instant' });
+          setActivePageItemIndex(pageItemIndex);
+        }}
       >
         {children}
       </motion.button>
