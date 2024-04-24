@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react';
 import { PageSkills } from './page_skills';
 import { PageContact } from './page_contact';
 import { PageProjects } from './page_projects';
+import { PageAbout } from './page_about';
 
 export const PageContext = createContext();
 
@@ -57,8 +58,4 @@ export function Page() {
       )}
     </div>
   );
-}
-
-function PageAbout() {
-  return null;
 }
