@@ -117,7 +117,7 @@ export function PageProjects() {
             </motion.div>
           ) : (
             <motion.div
-              className='absolute z-10 h-screen w-screen bg-base-300'
+              className='absolute z-10 h-screen w-screen min-w-80 bg-base-300'
               key={projectItem.title}
               layout
               layoutId={projectItem.title}

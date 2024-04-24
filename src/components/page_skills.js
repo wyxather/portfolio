@@ -47,7 +47,7 @@ function Group({ title, children }) {
         {title}
       </div>
       <motion.div
-        className='flex flex-wrap rounded-b-xl rounded-r-xl bg-base-200 p-3 shadow-md'
+        className='flex min-w-80 flex-wrap rounded-b-xl rounded-r-xl bg-base-200 p-3 shadow-md'
         whileInView='whileInView'
         viewport={{
           once: false,

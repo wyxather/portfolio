@@ -72,7 +72,7 @@ function Contact({ style, href, children }) {
 export function PageContact() {
   return (
     <motion.div
-      className='m-8 flex flex-wrap rounded-xl bg-base-200 p-3 shadow-md'
+      className='m-8 flex min-w-80 flex-wrap justify-center rounded-xl bg-base-200 p-3 shadow-md'
       whileInView='whileInView'
       viewport={{
         once: false,
