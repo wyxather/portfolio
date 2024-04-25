@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LayoutGroup, motion } from 'framer-motion';
 import { createContext, useState } from 'react';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faDownload,
+} from '@fortawesome/free-solid-svg-icons';
+import orion from '../images/orion.png';
 
 const Locale = 'en-GB';
 
@@ -15,12 +19,13 @@ const DateConfig = {
 const ProjectContext = createContext();
 
 class ProjectItem {
-  constructor(title, summary, tags, lastUpdated, link) {
+  constructor(title, summary, tags, lastUpdated, link, image) {
     this.title = title;
     this.summary = summary;
     this.tags = tags;
     this.lastUpdated = lastUpdated;
     this.link = link;
+    this.image = image;
   }
 }
 
@@ -29,8 +34,9 @@ const ProjectItems = [
     'orion',
     'A base to be used for game hacking or game modding related content. Featuring return address spoofer for both x86 and x64 operating system, minimal imports and custom animated imgui widgets.',
     ['C', 'C++', 'HLSL', 'DirectX 9', 'DirectX 11', 'ImGui'],
-    new Date(2024, 3, 14).toLocaleDateString(Locale, DateConfig),
+    new Date(2024, 3, 16).toLocaleDateString(Locale, DateConfig),
     'https://github.com/wyxather/orion',
+    orion,
   ),
   new ProjectItem(
     'portfolio',
@@ -38,6 +44,7 @@ const ProjectItems = [
     ['ReactJS', 'Tailwind CSS', 'Framer Motion', 'daisyUI'],
     new Date(2024, 3, 25).toLocaleDateString(Locale, DateConfig),
     'https://github.com/wyxather/portfolio',
+    null,
   ),
 ];
 
@@ -67,9 +74,16 @@ export function PageProjects() {
             >
               <LayoutGroup id={projectItem.title}>
                 <motion.div
-                  layoutId='img'
+                  layoutId='imgContainer'
                   className='flex h-64 w-64 justify-center bg-base-200'
-                ></motion.div>
+                >
+                  <motion.img
+                    layoutId='img'
+                    className='h-full w-auto object-cover'
+                    src={projectItem.image}
+                    alt=''
+                  ></motion.img>
+                </motion.div>
                 <div className='absolute top-48 h-48 w-64 bg-base-300/80 transition duration-300 ease-in hover:-translate-y-2/3 hover:ease-out'>
                   <button
                     className='btn btn-ghost btn-sm absolute bottom-0 right-0 m-2'
@@ -131,9 +145,16 @@ export function PageProjects() {
                 </button>
                 <div className='h-1/2 min-h-64 w-full min-w-64'>
                   <motion.div
-                    layoutId='img'
+                    layoutId='imgContainer'
                     className='flex h-full w-full justify-center bg-base-200'
-                  ></motion.div>
+                  >
+                    <motion.img
+                      layoutId='img'
+                      className='h-full w-auto object-cover'
+                      src={projectItem.image}
+                      alt=''
+                    ></motion.img>
+                  </motion.div>
                 </div>
                 <div className='min-h-64 w-fit'>
                   <motion.div

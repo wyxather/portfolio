@@ -1,12 +1,12 @@
 import { animate, motion, useMotionValue, useTransform } from 'framer-motion';
-import turtle from '../images/turtle.jpg';
+import me from '../images/me.jpg';
 import { useEffect } from 'react';
 
 const Messages = [
-  'first message',
-  'second message',
-  'third message',
-  'fourth message',
+  'a coder',
+  'a programmer',
+  'a backend developer',
+  'currently learning react js',
 ];
 
 function Image() {
@@ -14,7 +14,7 @@ function Image() {
     <div className='flex w-full min-w-64 justify-center sm:w-fit'>
       <motion.img
         className='w-full max-w-80 rounded-full border-4 shadow'
-        src={turtle}
+        src={me}
         variants={{
           initial: {
             scale: 0,
@@ -63,6 +63,7 @@ function About() {
       }}
       viewport={{
         once: false,
+        amount: 0.8,
       }}
       className='flex flex-wrap bg-base-300 p-8'
     >
@@ -123,7 +124,7 @@ function Message(props) {
         update.set(true);
       },
     });
-  }, [count, index, update, Messages.length]);
+  }, [count, index, update]);
   return <motion.span {...props}>{text}</motion.span>;
 }
 
