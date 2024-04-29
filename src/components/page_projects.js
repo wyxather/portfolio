@@ -71,7 +71,7 @@ export function PageProjects() {
     <ProjectContext.Provider
       value={[activeProjectItemIndex, setActiveProjectItemIndex]}
     >
-      <div className='relative flex h-screen w-screen flex-wrap'>
+      <div className='relative flex flex-wrap'>
         {projectItems.map((projectItem, projectItemIndex) =>
           activeProjectItemIndex !== projectItemIndex ? (
             <motion.div
