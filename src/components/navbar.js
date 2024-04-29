@@ -1,6 +1,7 @@
 import { motion, useCycle } from 'framer-motion';
 import { createContext, useContext } from 'react';
 import { PageContext, PageItems } from './page';
+import { Search } from './search';
 
 const NavbarContext = createContext();
 
@@ -170,8 +171,11 @@ export function Navbar() {
   return (
     <NavbarContext.Provider value={[isMenuOpen, toggleMenuOpen]}>
       <Container>
-        <Button />
-        <Label />
+        <div className='navbar-start'>
+          <Button />
+          <Label />
+        </div>
+        <Search />
       </Container>
       <Menu>
         {PageItems.map((pageItem, pageItemIndex) => (

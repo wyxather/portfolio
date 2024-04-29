@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LayoutGroup, motion } from 'framer-motion';
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import {
   faArrowLeft,
   faArrowRight,
   faDownload,
 } from '@fortawesome/free-solid-svg-icons';
 import orion from '../images/orion.png';
+import { SearchContext } from './search';
 
 const Locale = 'en-GB';
 
@@ -50,12 +51,28 @@ const ProjectItems = [
 
 export function PageProjects() {
   const [activeProjectItemIndex, setActiveProjectItemIndex] = useState(null);
+  const [searchInputText] = useContext(SearchContext);
+  const projectItems = searchInputText
+    ? ProjectItems.filter((projectItem) => {
+        const searchKeyword = searchInputText.toLowerCase();
+        for (const tag of projectItem.tags) {
+          if (tag.toLowerCase().includes(searchKeyword)) {
+            return true;
+          }
+        }
+        return (
+          projectItem.title.toLowerCase().includes(searchKeyword) ||
+          projectItem.summary.toLowerCase().includes(searchKeyword) ||
+          projectItem.lastUpdated.toLowerCase().includes(searchKeyword)
+        );
+      })
+    : ProjectItems;
   return (
     <ProjectContext.Provider
       value={[activeProjectItemIndex, setActiveProjectItemIndex]}
     >
       <div className='relative flex h-screen w-screen flex-wrap'>
-        {ProjectItems.map((projectItem, projectItemIndex) =>
+        {projectItems.map((projectItem, projectItemIndex) =>
           activeProjectItemIndex !== projectItemIndex ? (
             <motion.div
               className='relative m-4 h-64 w-64 overflow-clip rounded-lg bg-base-300 shadow-md'
