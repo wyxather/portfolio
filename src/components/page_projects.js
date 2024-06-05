@@ -32,6 +32,14 @@ class ProjectItem {
 
 const ProjectItems = [
   new ProjectItem(
+    'monkey',
+    'A simple web app to track your expense. Featuring a token based auth, multiple profiles and categories.',
+    ['Next.js', 'NextUI', 'MongoDB'],
+    new Date(2024, 6, 5).toLocaleDateString(Locale, DateConfig),
+    'https://github.com/wyxather/monkey',
+    null,
+  ),
+  new ProjectItem(
     'orion',
     'A base to be used for game hacking or game modding related content. Featuring return address spoofer for both x86 and x64 operating system, minimal imports and custom animated imgui widgets.',
     ['C', 'C++', 'HLSL', 'DirectX 9', 'DirectX 11', 'ImGui'],
